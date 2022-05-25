@@ -5,4 +5,4 @@ cd  ./demo_4/app
 docker build -t "$ecr_url":"$app_tag" .
 docker push "$ecr_url":"$app_tag"
 cd ../..
-rm -rf demo_4
+rm -rf final_demo
