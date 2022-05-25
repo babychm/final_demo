@@ -58,5 +58,5 @@ resource "aws_iam_role_policy_attachment" "ecs" {
 
 resource "aws_iam_role_policy_attachment" "iam" {
   role       = aws_iam_role.ecs_agent.name
-  policy_arn = "arn:aws:iam::aws:policy/IAMFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/EC2InstanceProfileForImageBuilderECRContainerBuilds"
 }
