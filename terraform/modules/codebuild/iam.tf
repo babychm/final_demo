@@ -47,6 +47,11 @@ resource "aws_iam_role_policy" "cobebuild_policy" {
       "Resource": "arn:aws:iam::*:role/*"
     },
     {
+      "Effect": "Allow",
+      "Action": "iam:GetInstanceProfile",
+      "Resource": "*"
+    },
+    {
       "Action": "iam:CreateServiceLinkedRole",
       "Effect": "Allow",
       "Resource": "arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS",

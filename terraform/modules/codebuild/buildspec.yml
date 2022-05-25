@@ -9,12 +9,17 @@ phases:
       - REPOSITORY_URI=${ECR_APP_URL}
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - TIMESTAMP=$(TZ="Europe/Zaporozhye" date +"%d.%m.%y_%H.%M")
-      - IMAGE_TAG=${ENV}-${COMMIT_HASH:=latest-codebuild}-${TIMESTAMP}
+      - IMAGE_TAG=${ENV}-${CODEBUILD_RESOLVED_SOURCE_VERSION}-${TIMESTAMP}
       - cd /usr/local/bin
       - curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
       - unzip -o terraform.zip
       - chmod +x terraform
       - pip install jq
+      - echo "Getting existing tag"
+      - export SERVICE_ARN=$(aws ecs list-services --cluster ${APP_NAME}-${ENV}-cluster | jq -r .serviceArns[])
+      - export TASKDEF_ARN=$(aws ecs describe-services --cluster ${APP_NAME}-${ENV}-cluster --service ${SERVICE_ARN} | jq -r .services[].taskDefinition)
+      - export EXISTING_TAG=$(aws ecs describe-task-definition --task-definition ${TASKDEF_ARN} | jq -r .taskDefinition.containerDefinitions[].image | tr ':' ' ' | awk '{print $2}')
+      - echo "Current version is ${EXISTING_TAG}"
   build:
     commands:
       - echo Logging in to Amazon ECR...

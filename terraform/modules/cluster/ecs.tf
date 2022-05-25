@@ -8,7 +8,7 @@ resource "aws_ecr_repository" "demo" {
 }
 
 resource "aws_ecs_cluster" "ecs_cluster" {
-  name = "${var.env}-cluster"
+  name = "${app_name}-${var.env}-cluster"
 }
 
 resource "aws_ecs_task_definition" "demo" {

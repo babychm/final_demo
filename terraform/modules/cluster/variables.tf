@@ -21,7 +21,7 @@ variable "public_subnets_ids" {}
 variable "private_subnets_ids" {}
 
 variable "app_tag" {
-  default = "v1"
+  type = string
 }
 
 variable "target_port" {
