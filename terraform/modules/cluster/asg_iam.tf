@@ -42,7 +42,8 @@ data "template_file" "ecs_service_policy" {
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage",
                 "logs:CreateLogStream",
-                "logs:PutLogEvents"
+                "logs:PutLogEvents",
+                "iam:GetInstanceProfile"
             ],
             "Resource": "*"
         }
