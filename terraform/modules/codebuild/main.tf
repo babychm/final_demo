@@ -16,7 +16,7 @@ EOF
 }
 
 resource "aws_s3_bucket" "demo-pepe-frog" {
-  bucket = "demo-pepe-frog"
+  bucket = "${var.env}-demo-pepe-frog"
 }
 
 resource "aws_s3_bucket_acl" "demo" {
