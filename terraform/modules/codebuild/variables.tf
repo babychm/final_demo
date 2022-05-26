@@ -39,7 +39,7 @@ variable "git_trigger_event" {
 }
 
 variable "github_branch" {
-  default = ""
+  type = string
 }
 
 variable "buildspec" {
