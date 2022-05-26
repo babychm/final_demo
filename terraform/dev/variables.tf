@@ -19,11 +19,7 @@ variable "account_id" {
 variable "region" {
   type = string
 }
-/*
-variable "bucket_name" {
-  type = string
-}
-*/
+
 variable "github_oauth_token" {
   type    = string
   default = ""
@@ -32,6 +28,14 @@ variable "github_oauth_token" {
 variable "github_repo" {
   type    = string
   default = ""
+}
+
+variable "git_trigger_event" {
+  type = string
+}
+
+variable "github_branch" {
+  type = string
 }
 
 variable "buildspec" {

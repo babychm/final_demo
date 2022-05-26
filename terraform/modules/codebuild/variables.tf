@@ -38,7 +38,7 @@ variable "git_trigger_event" {
   type = string
 }
 
-variable "branch_pattern" {
+variable "github_branch" {
   default = ""
 }
 

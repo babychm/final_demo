@@ -27,7 +27,7 @@ resource "aws_s3_bucket_acl" "demo" {
 resource "aws_codebuild_source_credential" "this" {
   auth_type   = "PERSONAL_ACCESS_TOKEN"
   server_type = "GITHUB"
-  token       = var.gitbranch_patternhub_oauth_token
+  token       = var.github_oauth_token
 }
 
 resource "aws_codebuild_project" "demo-pepe" {
@@ -113,7 +113,7 @@ resource "aws_codebuild_webhook" "demo_webhook" {
 
     filter {
       type    = "HEAD_REF"
-      pattern = var.branch_pattern
+      pattern = var.github_branch
     }
   }
 }
