@@ -35,11 +35,11 @@ variable "github_oauth_token" {
 }
 
 variable "git_trigger_event" {
-  default = "PUSH"
+  type = string
 }
 
 variable "branch_pattern" {
-  default = "main"
+  default = ""
 }
 
 variable "buildspec" {
