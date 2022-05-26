@@ -1,6 +1,6 @@
 resource "null_resource" "build" {
   provisioner "local-exec" {
-    command = "./modules/init-build/build.sh"
+    command = "../modules/init-build/build.sh"
 
     environment = {
       region      = var.region

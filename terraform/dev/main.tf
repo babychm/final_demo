@@ -1,10 +1,5 @@
-/*module "s3_terraform_state" {
-  source      = "./modules/s3"
-  bucket_name = var.bucket_name
-}
-*/
 module "vpc" {
-  source = "./modules/vpc"
+  source = "../modules/vpc"
 
   region          = var.region
   env             = var.env
@@ -14,7 +9,7 @@ module "vpc" {
 }
 
 module "cluster" {
-  source              = "./modules/cluster"
+  source              = "../modules/cluster"
   app_name            = var.app_name
   app_tag             = var.app_tag
   env                 = var.env
@@ -29,7 +24,7 @@ module "cluster" {
 }
 
 module "init-build" {
-  source         = "./modules/init-build"
+  source         = "../modules/init-build"
   account_id     = var.account_id
   region         = var.region
   github_repo    = var.github_repo
@@ -42,7 +37,7 @@ module "init-build" {
 }
 
 module "codebuild" {
-  source = "./modules/codebuild"
+  source = "../modules/codebuild"
 
   account_id              = var.account_id
   app_name                = var.app_name
