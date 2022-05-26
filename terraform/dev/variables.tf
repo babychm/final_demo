@@ -19,11 +19,11 @@ variable "account_id" {
 variable "region" {
   type = string
 }
-
+/*
 variable "bucket_name" {
   type = string
 }
-
+*/
 variable "github_oauth_token" {
   type    = string
   default = ""

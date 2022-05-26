@@ -38,7 +38,7 @@ phases:
       - aws ecs update-service --cluster ${TASK_DEFINITION_CLUSTER} --service ${TASK_DEFINITION_SERVICE} --task-definition ${TASK_DEFINITION_FAMILY}:${NEW_REVISION}
       - echo Build completed on `date`
       - echo "Updating Infrastructure..."
-      - cd "$CODEBUILD_SRC_DIR"/terraform
+      - cd "$CODEBUILD_SRC_DIR"/terraform/${ENV}
       - terraform init
-      - terraform plan -target=module.cluster --var-file="./${ENV}.tfvars" -var="app_tag=${TAG}"
-      - terraform apply -target=module.cluster --var-file=./${ENV}.tfvars -var="env=${ENV}" -var="app_tag=${IMAGE_TAG}" --auto-approve
+      - terraform plan -target=module.cluster -var="app_tag=${TAG}"
+      - terraform apply -target=module.cluster -var="app_tag=${IMAGE_TAG}" --auto-approve
