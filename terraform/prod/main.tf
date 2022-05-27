@@ -50,6 +50,7 @@ module "codebuild" {
   github_repo             = var.github_repo
   github_branch           = var.github_branch
   git_trigger_event       = var.git_trigger_event
+  github_branch           = var.github_branch
   github_oauth_token      = var.github_oauth_token
   buildspec               = var.buildspec
   task_definition_family  = module.cluster.task_definition_family
